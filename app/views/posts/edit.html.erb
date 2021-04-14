@@ -1,11 +1,16 @@
 <h3>Post Form</h3>
 
-<%= form_tag post_path(@post), method: "put" do %>
+<%= form_for(@post) do |f|%>
   <label>Post title:</label><br>
-  <%= text_field_tag :title, @post.title %><br>
+  <%= f.text_field :title %><br>
 
   <label>Post Description</label><br>
-  <%= text_area_tag :description, @post.description %><br>
+  <%= f.text_area :description %><br>
   
-  <%= submit_tag "Submit Post" %>
+  <%= f.submit %>
 <% end %>
+
+#refactor isn't quite done. If you had previous created a PUT route like 
+#we did in the form_tag lesson, we'll need to change that to a 
+#PATCH method since that is the HTTP verb that form_for utilizes.
+#We can make that change in the config/routes.rb file
